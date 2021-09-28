@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/navbar.css">
+  <link rel="stylesheet" href="./assets/css/myProjects.css">
+  <link rel="stylesheet" href="./assets/css/exProjPg.css">
+
+</head>
+
+<body>
+
+  <!-- side navbar -->
+  <div class="sideNavbar">
+
+    <!-- project title -->
+    <div class="appDiv">
+      <div class="appHeader d-flex align-items-center">
+        <i class="bi bi-lightbulb" id="lightbulb"></i>
+        <div class="appName mt-1">PUB</div>
+      </div>
+      <i class="bi bi-list text-center" id="toggleBtn"></i>
+    </div>
+
+    <!-- navbar list -->
+    <ul class="navbarLi p-0 mt-2">
+      <li>
+        <a href="./aboutUs.html">
+          <i class="bi bi-people-fill"></i>
+          <span class="navTab">About Us</span>
+        </a>
+      </li>
+      <li>
+        <a href="./myProjects.html">
+          <i class="bi bi-lightbulb-fill"></i>
+          <span class="navTab">My Projects</span>
+        </a>
+      </li>
+      <li>
+        <a href="./searchProjects.html">
+          <i class="bi bi-search"></i>
+          <span class="navTab">Search Projects</span>
+        </a>
+      </li>
+      <li>
+        <a href="./trackProjects.html">
+          <i class="bi bi-bookmark-heart-fill"></i>
+          <span class="navTab">Track Projects</span>
+        </a>
+      </li>
+      <li>
+        <div class="logOutBtn" id="logOutBtn">
+          <i class="bi bi-box-arrow-left"></i>
+          <span class="navTab">Log Out</span>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- page content -->
+  <div class="container-fluid pageContent" id="myProBG">
+
+    <!-- page content header -->
+    <div class="row">
+
+      <!-- tab title -->
+      <div class="col tabTitle">My Projects</div>
+
+    </div>
+
+    <!-- div for displaying my project -->
+    <div class="row" id="displayMyProject">
+
+      <!-- project card example-->
+      <div class="col-sm-12 mb-3">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="row mb-2">
+
+              <!-- project title -->
+              <div class="col">
+                <h5 class="card-title" id="myIndProjTitle"></h5>
+                <!-- project category -->
+                <h6 class="card-subtitle mb-2 text-muted" id="myIndProjCategory"></h6>
+              </div>
+
+              <div class="col-sm-6">
+                <div class=" text-wrap row">
+
+                  <!-- calendar icon -->
+                  <div class="col-1 calendarIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor"
+                      class="bi bi-calendar-week" viewBox="0 0 16 16">
+                      <path
+                        d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                      <path
+                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                    </svg>
+                  </div>
+
+                  <!-- start date -->
+                  <div class="col-11 d-flex align-items-center datesFS">
+                    <span class="card-text mb-0" id="startDate"></span>
+                  </div>
+
+                </div>
+              </div>
+
+              <p class="card-text" id="description"></p>
+
+            </div>
+
+            <!-- project tasks -->
+            <div class="row mb-2">
+              <div class="col">
+                <p class="card-text mt-3 mb-0 fw-bold">Tasks:</p>
+                <ul id="tasksLi"></ul>
+              </div>
+            </div>
+
+            <!-- project progress and progress bar -->
+            <div class="row mb-4" id="progressArea"></div>
+
+            <!-- edit btn and delete btn -->
+            <button type="button" class="btn btn-outline-primary editProject" id="editProject" data-bs-toggle="modal"
+              data-bs-target="#editModal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z">
+                </path>
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z">
+                </path>
+              </svg>
+            </button>
+
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="editModal">Edit Project</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+
+                    <!-- Create project form in modal -->
+                    <form class="row g-3">
+
+                      <!-- project title input -->
+                      <div class="col-12 mb-3">
+                        <label for="projectTitle" class="col-form-label">Title</label>
+                        <input type="text" class="form-control" id="modalProjectTitle" value="">
+                      </div>
+
+                      <!-- project description input -->
+                      <div class="col-12 mb-3">
+                        <label for="projectDes" class="col-form-label">Description</label>
+                        <textarea class="form-control" id="modalDescription"></textarea>
+                      </div>
+
+                      <!-- project category input -->
+                      <div class="col-12 mb-3">
+                        <label for="projectCat" class="col-form-label">Category</label>
+                        <input type="text" class="form-control" id="modalProjectCat">
+                      </div>
+
+                      <!-- project tasks input -->
+                      <div class="col-12 mb-3">
+                        <label for="projectTasks" class="col-form-label">Add Tasks</label>
+                        <input type="text" class="form-control task-input" id="projectTasks">
+                        <button id="addTask">+</button>
+                      </div>
+
+                      <!-- div to display project tasks -->
+                      <div class="col-12 mb-0 mt-0">
+                        <ul id="task-list"></ul>
+                      </div>
+
+                    </form>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveChanges">Save
+                      Changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- delete project btn -->
+            <button type="button" class="btn btn-outline-danger deleteProject" id="deleteProject">Delete
+              Project</button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- div for displaying comments -->
+    <div class="row mt-2 text-white" id="displayComments">
+      <h5>Comments:</h5>
+      <div class="col-sm-12" id="comments"></div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./assets/js/navbar.js"></script>
+  <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/exProjectPg.js"></script>
+
+</body>
+
+</html>
